@@ -39,6 +39,8 @@
               .then((res) => {
                 if (res.data) {
                   alert("로그인 성공!");
+                  console.log("res.data" + res.data);
+                  console.log("JSON.stringify(res.data) : " + JSON.stringify(res.data));
                   this.$store.state.isAuthenticated = true;
                   this.$cookies.set("user", res.data, 3600);
                   localStorage.setItem("userInfo", JSON.stringify(res.data));

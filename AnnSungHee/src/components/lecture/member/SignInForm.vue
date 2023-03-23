@@ -93,14 +93,18 @@
         ],
         password_rule: [
           v => this.state === 'ins' ? !!v || '패스워드는 필수 입력사항입니다.' : true,
-          v => !(v && v.length >= 30) || '패스워드는 30자 이상 입력할 수 없습니다.',
+          v => !(v && v.length >= 30 && v.length <= 8) || '패스워드는 30자 이상 입력할 수 없습니다.',
         ],
       };
     },
     methods: {
       onSubmit() {
-        const { email, password } = this;
-        this.$emit("submit", { email, password });
+        if (this.password.length <= 8) {
+          alert('more')
+        } else {
+          const { email, password } = this;
+          this.$emit("submit", { email, password });
+        }
       },
     },
   };
